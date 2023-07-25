@@ -1,0 +1,21 @@
+1. **Localização geográfica**: Ex. continente, montanhas, planices, floresta;
+2. **Cidade ou Assentamento**: povoamento humano ou cidades;
+3. **Construção**: Ex. casa, apartamento, masmorra, caverna, castelo;
+4. **Objeto**: Item ou Documento. Ex. armas, roupas, joias, ferramentas carta, livro;
+5. **Material**: Ex. Aço Valiriano, Mithril, escama de dragão, cifre de unicórnio;
+6. **Personagem**: Ex. herói, vilão, guarda, mercador, animal de estimação;
+7. **Raça**: Ex. elfos, orcs, humanos, trolls;
+8. **Espécies**: Ex. animais como cachorros, gatos, peixes;
+9. **Condição**: Ex. doença, inspiração, alterações de humor;
+10. **Idioma**: Ex. Português, Inglês, Élfico;
+11. **Conflitos e dramas**: Influência do governo, militar, religiosa, tecnológica, das artes e da cultura. Problemas envolvendo força econômica, distribuição de riqueza, relações entre pessoas ditadas por características raciais, de classe, de gênero ou de orientação sexual;
+12. **Organização**: Ex. Igreja, governo, seitas, grupo de heróis, grupo de vilões;
+13. **Profissão**: Ex. taberneiro, guarda;
+14. **Posto ou título**: Ex. Rei, General, Chefe;
+15. **Lei**: Leis de determinadas cidades ou assentamentos;
+16. **Tecnologia ou ciência**;
+17. **Feitiço ou habilidade**: Ex. teletransporte, Bola de fogo;
+18. **Mito ou lenda**: Ex. Mitos sobre as leis da natureza, monstros, heróis ou a origem do universo;
+19. **Tradição ou ritual**: Ex. orações, sacrifícios;
+20. **Veículo**: Qualquer meio de transporte;
+21. **Outro**: Qualquer outra entidade nomeada presente no texto.

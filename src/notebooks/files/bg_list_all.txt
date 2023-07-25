@@ -1,0 +1,308 @@
+Altharia
+   - Rótulo: Loc_assentamento
+   - Descrição: Continente mágico onde a história se passa.
+
+Sirian
+   - Rótulo: Personagem
+   - Descrição: Líder da guilda de aventureiros em Altharia. É um guerreiro valente e honrado, conhecido por sua armadura reluzente.
+
+Cidadela dos Sonhos
+   - Rótulo: Construcao
+   - Descrição: Local misterioso e encantado onde a realidade e os sonhos se entrelaçam. É guardada pelos Sussurros, seres etéreos cujas vozes ecoam entre as muralhas de pedra.
+
+Sussurros
+   - Rótulo: Personagem
+   - Descrição: Seres etéreos que guardam a Cidadela dos Sonhos. Suas vozes ecoam entre as muralhas de pedra.
+
+Floresta Proibida de Eldreth
+   - Rótulo: Loc_assentamento
+   - Descrição: Floresta perigosa habitada por criaturas fantásticas. Abriga a Pedra da Eternidade, um artefato sagrado.
+
+Pedra da Eternidade
+   - Rótulo: Objeto
+   - Descrição: Artefato sagrado enterrado na Floresta Proibida de Eldreth. Apenas aqueles que possuem a benção do Ancião das Árvores podem encontrá-la.
+
+Ancião das Árvores
+   - Rótulo: Personagem
+   - Descrição: Ser místico que habita a Floresta Proibida de Eldreth. Aqueles que possuem sua benção podem encontrar a Pedra da Eternidade.
+
+Lorde das Sombras
+   - Rótulo: Personagem
+   - Descrição: Governante cruel das Terras Sombrias. Seu exército das trevas espalha caos e destruição.
+
+Arlene
+   - Rótulo: Personagem
+   - Descrição: Guerreira destemida e habilidosa que surge como líder capaz de enfrentar o Lorde das Sombras. Possui uma profecia escrita nas estrelas.
+
+Torre dos Magos
+   - Rótulo: Construcao
+   - Descrição: Local onde os sábios estudam os segredos arcanos em Altharia. Palco de disputas pelo conhecimento e pela busca pela verdade.
+
+Elfes
+   - Rótulo: Especie
+   - Descrição: Raça sábia e graciosa em Altharia. Possuem uma conexão especial com a magia e a natureza.
+
+Anões
+   - Rótulo: Especie
+   - Descrição: Raça obstinada e forte em Altharia. São habilidosos em trabalhos manuais e possuem uma grande força física.
+
+Halflings
+   - Rótulo: Especie
+   - Descrição: Raça ágil e astuta em Altharia. São conhecidos por sua destreza e habilidades furtivas.
+
+Guilda de Aventureiros RELACAO_POSITIVA Sirian
+Cidadela dos Sonhos ESTA_EM Altharia
+Sussurros ESTA_EM Cidadela dos Sonhos
+Floresta Proibida de Eldreth ESTA_EM Altharia
+Pedra da Eternidade ESTA_EM Floresta Proibida de Eldreth
+Ancião das Árvores RELACAO_POSITIVA Pedra da Eternidade
+Lorde das Sombras RELACAO_NEGATIVA Altharia
+Arlene RELACAO_POSITIVA Lorde das Sombras
+Torre dos Magos ESTA_EM Altharia
+Elfes MEMBRO_DE Altharia
+Anões MEMBRO_DE Altharia
+Halflings MEMBRO_DE Altharia
+
+Mestre dos Sonhos
+   - Rótulo: Personagem
+   - Descrição: Ser místico que aguarda os aventureiros na Cidadela dos Sonhos. Conta histórias do passado e desafia os bravos a solucionarem os enigmas da fortaleza.
+
+Biblioteca dos Sonhadores
+   - Rótulo: Construcao
+   - Descrição: Sala na Cidadela dos Sonhos onde estão guardados livros antigos e empoeirados. Contém conhecimentos proibidos, lendas esquecidas e relatos de viajantes.
+
+Guardiões dos Sonhos
+   - Rótulo: Personagem
+   - Descrição: Criaturas místicas feitas de pura energia mágica. São os guardiões da Cidadela dos Sonhos e devem ser derrotados para obter a chave que desvendará o mistério da fortaleza.
+
+Mestre dos Sonhos RELACAO_POSITIVA Cidadela dos Sonhos
+Biblioteca dos Sonhadores ESTA_EM Cidadela dos Sonhos
+Guardiões dos Sonhos ESTA_EM Cidadela dos Sonhos
+
+Cidadela dos Sonhos RELACAO_POSITIVA Mestre dos Sonhos
+Cidadela dos Sonhos RELACAO_POSITIVA Biblioteca dos Sonhadores
+Cidadela dos Sonhos RELACAO_NEGATIVA Guardiões dos Sonhos
+
+Elfos Selvagens MEMBRO_DE Floresta Proibida de Eldreth
+Licantropos MEMBRO_DE Floresta Proibida de Eldreth
+Dríades MEMBRO_DE Floresta Proibida de Eldreth
+Ancião das Árvores ESTA_EM Floresta Proibida de Eldreth
+Pedra da Eternidade ESTA_EM Floresta Proibida de Eldreth
+
+Floresta Proibida de Eldreth RELACAO_POSITIVA Elfos Selvagens
+Floresta Proibida de Eldreth RELACAO_NEGATIVA Licantropos
+Floresta Proibida de Eldreth RELACAO_POSITIVA Dríades
+Ancião das Árvores RELACAO_POSITIVA Pedra da Eternidade
+
+Altairon
+   - Rótulo: Personagem
+   - Descrição: Líder do exército do Lorde das Sombras. É temido por sua crueldade e poder sombrio.
+
+Corvus
+   - Rótulo: Personagem
+   - Descrição: Paladino líder da resistência contra o Lorde das Sombras. Sua armadura brilha com a luz da esperança.
+
+Lyra
+   - Rótulo: Personagem
+   - Descrição: Bruxa poderosa que invoca o fogo dos espíritos ancestrais. Luta ao lado de Corvus na resistência.
+
+Athanar
+   - Rótulo: Personagem
+   - Descrição: Elfo arqueiro habilidoso que perfura as defesas do inimigo com suas flechas precisas. Faz parte da resistência contra o Lorde das Sombras.
+
+Os Destinados
+   - Rótulo: Organizacao
+   - Descrição: Grupo de guerreiros lendários liderados por Arlene. São destinados a enfrentar o Lorde das Sombras e trazer um futuro melhor para Altharia.
+
+Erevan
+   - Rótulo: Personagem
+   - Descrição: Elfo sombrio que se tornou vigilante, protegendo os mais fracos. Faz parte dos Destinados.
+
+Bruna
+   - Rótulo: Personagem
+   - Descrição: Clériga dedicada aos deuses da cura. Suas palavras e magias trazem alívio às feridas da batalha. Faz parte dos Destinados.
+
+Zephyr
+   - Rótulo: Personagem
+   - Descrição: Ladino astuto e talentoso, capaz de se infiltrar nas linhas inimigas. Desestabiliza as forças do Lorde das Sombras. Faz parte dos Destinados.
+
+Lorde das Sombras RELACAO_NEGATIVA Altharia
+Corvus RELACAO_POSITIVA Lyra
+Corvus RELACAO_POSITIVA Athanar
+Corvus MEMBRO_DE Os Destinados
+Lyra MEMBRO_DE Os Destinados
+Athanar MEMBRO_DE Os Destinados
+Erevan MEMBRO_DE Os Destinados
+Bruna MEMBRO_DE Os Destinados
+Zephyr MEMBRO_DE Os Destinados
+
+Rei Valerian
+   - Rótulo: Personagem
+   - Descrição: Governante astuto e calculista de Altharia. Manipula alianças e mantém os laços com outras terras firmes.
+
+Casa de Espinhos
+   - Rótulo: Organizacao
+   - Descrição: Família de nobres ambiciosos que conspira para minar o rei Valerian e tomar o trono para si. Liderados por Lady Isabella, traçam planos complexos e manipulações sórdidas nos bastidores.
+
+Lady Isabella
+   - Rótulo: Personagem
+   - Descrição: Líder da Casa de Espinhos. Mulher de beleza enigmática e astúcia implacável. Traça planos complexos e manipulações sórdidas nos bastidores.
+
+Rainha Seraphina
+   - Rótulo: Personagem
+   - Descrição: Líder justa e sábia dos elfos em Altharia. Governa com sabedoria e procura manter boas relações com as outras cidades.
+
+Ordem dos Magos
+   - Rótulo: Organizacao
+   - Descrição: Organização poderosa e enigmática que exerce grande influência nos assuntos de Altharia. Mestres da manipulação mágica.
+
+Liga dos Rebeldes
+   - Rótulo: Organizacao
+   - Descrição: Grupo de insurgentes ousados que lutam nas sombras para derrubar os tiranos e trazer igualdade ao reino. Liderados por "O Libertador".
+
+O Libertador
+   - Rótulo: Personagem
+   - Descrição: Líder misterioso da Liga dos Rebeldes. Seu objetivo é derrubar os tiranos e trazer igualdade ao reino.
+
+Rei Valerian RELACAO_NEGATIVA Casa de Espinhos
+Casa de Espinhos RELACAO_NEGATIVA Rei Valerian
+Rainha Seraphina RELACAO_POSITIVA Elfes
+Ordem dos Magos RELACAO_POSITIVA Altharia
+Liga dos Rebeldes RELACAO_POSITIVA Altharia
+
+Rei Valerian ESTA_EM Palácio Real
+Lady Isabella ESTA_EM Palácio Real
+Rainha Seraphina ESTA_EM Luminara
+O Libertador ESTA_EM Altharia
+
+Guilda de Aventureiros ESTA_EM Altharia
+Torre dos Magos ESTA_EM Altharia
+Guardiães Esquecidos MEMBRO_DE Torre dos Magos
+
+Lobisomens
+   - Rótulo: Especie
+   - Descrição: Seres que combinam a força dos lobos com a inteligência humana. Possuem uma estrutura social baseada em matilhas, onde o alfa é o líder e protetor de seu povo.
+
+Centauros
+   - Rótulo: Especie
+   - Descrição: Criaturas metade humanas e metade cavalos. Valorizam a honra, a sabedoria e a conexão com a natureza.
+
+Lobisomens MEMBRO_DE Altharia
+Centauros MEMBRO_DE Altharia
+
+Lobisomens RELACAO_POSITIVA Altharia
+Centauros RELACAO_POSITIVA Altharia
+
+Fé da Luz
+   - Rótulo: Religião
+   - Descrição: Religião que venera a deusa Seraphia, a Senhora da Esperança e da Iluminação. Seus seguidores buscam espalhar a compaixão e a justiça pela terra.
+
+Ordem do Crepúsculo Shadow
+   - Rótulo: Religião
+   - Descrição: Seita que adora deuses sombrios e misteriosos. Seus seguidores buscam o poder pessoal e a dominação, usando a magia sombria e os rituais macabros.
+
+Tribos dos Antigos
+   - Rótulo: Religião
+   - Descrição: Adoram os espíritos dos elementos da natureza.
+
+Quimeristas
+   - Rótulo: Religião
+   - Descrição: Reverenciam os dragões como seres divinos e acreditam que detêm um elo especial com eles.
+
+Ordem dos Transcendentais
+   - Rótulo: Religião
+   - Descrição: Buscam a transcendência espiritual através de meditação e disciplina mental.
+
+Clérigos da Fé da Luz
+   - Rótulo: Personagem
+   - Descrição: Seguidores da Fé da Luz que possuem habilidades divinas, especialmente em magias curativas.
+
+Paladinos da Fé da Luz
+   - Rótulo: Personagem
+   - Descrição: Seguidores da Fé da Luz que possuem habilidades divinas, especialmente em combate contra o mal.
+
+Clérigos da Ordem do Crepúsculo Shadow
+   - Rótulo: Personagem
+   - Descrição: Seguidores da Ordem do Crepúsculo Shadow que possuem habilidades divinas, especialmente em magias sombrias.
+
+Paladinos da Ordem do Crepúsculo Shadow
+   - Rótulo: Personagem
+   - Descrição: Seguidores da Ordem do Crepúsculo Shadow que possuem habilidades divinas, especialmente em combate usando a magia sombria.
+
+Fé da Luz RELACAO_POSITIVA Clérigos da Fé da Luz
+Fé da Luz RELACAO_POSITIVA Paladinos da Fé da Luz
+Ordem do Crepúsculo Shadow RELACAO_POSITIVA Clérigos da Ordem do Crepúsculo Shadow
+Ordem do Crepúsculo Shadow RELACAO_POSITIVA Paladinos da Ordem do Crepúsculo Shadow
+
+Fé da Luz RELACAO_NEGATIVA Ordem do Crepúsculo Shadow
+Ordem do Crepúsculo Shadow RELACAO_NEGATIVA Fé da Luz
+
+Fé da Luz BASEADO_EM Seraphia
+Ordem do Crepúsculo Shadow BASEADO_EM Deuses sombrios e misteriosos
+Tribos dos Antigos BASEADO_EM Espíritos dos elementos da natureza
+Quimeristas BASEADO_EM Dragões como seres divinos
+Ordem dos Transcendentais BASEADO_EM Transcendência espiritual
+
+Clérigos da Fé da Luz MEMBRO_DE Fé da Luz
+Paladinos da Fé da Luz MEMBRO_DE Fé da Luz
+Clérigos da Ordem do Crepúsculo Shadow MEMBRO_DE Ordem do Crepúsculo Shadow
+Paladinos da Ordem do Crepúsculo Shadow MEMBRO_DE Ordem do Crepúsculo Shadow
+
+Aventus BASEADO_EM Altharia
+Elyra BASEADO_EM Altharia
+Antigos BASEADO_EM Altharia
+Elfos BASEADO_EM Antigos
+Anões BASEADO_EM Antigos
+Halflings BASEADO_EM Antigos
+Dragões BASEADO_EM Antigos
+Tocados pelo caos BASEADO_EM Altharia
+
+Elfos RELACAO_POSITIVA Antigos
+Anões RELACAO_POSITIVA Antigos
+Halflings RELACAO_POSITIVA Antigos
+
+Esferas de invocação
+   - Rótulo: Objeto
+   - Descrição: Dispositivos mágicos poderosos que permitem a invocação de criaturas e entidades de outros planos.
+
+Amuletos de controle mental
+   - Rótulo: Objeto
+   - Descrição: Dispositivos mágicos que permitem controlar a mente de outras pessoas, influenciando suas ações e pensamentos.
+
+Carruagens mágicas
+   - Rótulo: Veiculo
+   - Descrição: Veículos impulsionados por cristais arcanos que permitem o transporte rápido de mercadorias entre cidades distantes em Altharia.
+
+Amuletos de fala distante
+   - Rótulo: Objeto
+   - Descrição: Dispositivos mágicos de comunicação que permitem a troca de informações instantânea entre diferentes pontos do reino de Altharia.
+
+Esferas de invocação RELACAO_NEGATIVA Altharia
+Amuletos de controle mental RELACAO_NEGATIVA Altharia
+Carruagens mágicas ESTA_EM Altharia
+Amuletos de fala distante ESTA_EM Altharia
+
+Artistas de Altharia
+   - Rótulo: Personagem
+   - Descrição: Indivíduos talentosos que se dedicam às diversas formas de expressão artística em Altharia.
+
+Música em Altharia
+   - Rótulo: Drama
+   - Descrição: A música é uma forma de expressão valorizada e reverenciada por todas as raças e classes sociais em Altharia.
+
+Dança em Altharia
+   - Rótulo: Drama
+   - Descrição: A dança desempenha um papel importante na vida cultural de Altharia, servindo tanto como forma de entretenimento quanto como meio de contar histórias.
+
+Pintura em Altharia
+   - Rótulo: Drama
+   - Descrição: A pintura é apreciada em toda Altharia, com diferentes estilos e técnicas encontradas em cada raça e região.
+
+Poesia e Literatura em Altharia
+   - Rótulo: Drama
+   - Descrição: A poesia e a literatura são formas de expressão altamente valorizadas em Altharia, transmitindo valores, tradições e visões de mundo.
+
+Artistas de Altharia RELACAO_POSITIVA Música em Altharia
+Artistas de Altharia RELACAO_POSITIVA Dança em Altharia
+Artistas de Altharia RELACAO_POSITIVA Pintura em Altharia
+Artistas de Altharia RELACAO_POSITIVA Poesia e Literatura em Altharia
