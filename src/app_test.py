@@ -547,6 +547,7 @@ def update_context():
                             description_pcs=st.session_state["description_pcs"])
     return context
 
+
 def roll_dice(atribute: int, test_type: str):
     dice = rd.randint(1, 6)
 
@@ -729,10 +730,12 @@ else:
                         st.session_state.end_adventure = True
                         # st.session_state.adventure_started = False
                     else:
+                        st.session_state.current_context = update_context()
+                        st.session_state.nodes_edges = update_nodes_edges()
+
                         st.session_state.current_scene_num += 1
                         st.session_state.chat_history_LLM = []
 
-                        st.session_state.current_context = update_context()
                         st.session_state.current_scene = generate_scene(chat_t1)
 
     # Display chat messages
