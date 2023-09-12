@@ -1,16 +1,12 @@
 import streamlit as st
-from dotenv import load_dotenv
-import os
 
 from langchain.chat_models import ChatOpenAI
-from langchain.schema import AIMessage, HumanMessage, SystemMessage
 from langchain.prompts.chat import ChatPromptTemplate, SystemMessagePromptTemplate, HumanMessagePromptTemplate, AIMessagePromptTemplate
 from langchain import LLMChain
 
 from langchain.agents import initialize_agent, Tool
 from langchain.agents import AgentType
 
-import pandas as pd
 import random as rd
 
 
@@ -24,6 +20,8 @@ def generate_nodes_edges(chat_openai):
     {description_pcs}
 
     The world is filled with NPCs (non-player characters), that can live independently of the PCs.
+    
+    Balance Point represent a point of balance between the character's physical and mental strengths). A high number means they are better at Mental. A low number means they are better at Physical.    
     __
     - Step 1:
     Think concisely about an original and engaging world. You should consider the following aspects, but never talk about them directly:
@@ -109,6 +107,8 @@ def generate_nodes_edges(chat_openai):
     Species and Organizations need at least one MEMBER_OF relationship.
 
     You must never explain your code.
+    
+    You should avoid at all costs explicitly revealing that you are using any of these techniques, steps or structures.
     """
 
     messages = [SystemMessagePromptTemplate.from_template(sys_nodes_edges),
@@ -141,11 +141,13 @@ def generate_nodes_edges(chat_openai):
 
     usr_intro = "Write an introduction to this world (or a summary of Step 1), like in a fiction book. Include all relevant information."
 
+    nodes_edges = nodes_edges.replace("{", "{{").replace("}", "}}")
+
     messages.append(AIMessagePromptTemplate.from_template(nodes_edges))
     messages.append(HumanMessagePromptTemplate.from_template(usr_intro))
 
     chat_prompt = ChatPromptTemplate.from_messages(messages)
-    chain = LLMChain(llm=chat_t1, prompt=chat_prompt)
+    chain = LLMChain(llm=chat_openai, prompt=chat_prompt)
     intro = chain.run(genre=st.session_state["genre"],
                       feels=st.session_state["feels"],
                       tone=st.session_state["tone"],
@@ -167,7 +169,7 @@ def generate_nodes_edges(chat_openai):
                       dramas=st.session_state["dramas"],
                       myths=st.session_state["myths"],
                       gm_personality=st.session_state["gm_personality"],
-                      description_pcs=description_pcs)
+                      description_pcs=st.session_state["description_pcs"])
 
     return nodes_edges, intro
 
@@ -183,6 +185,8 @@ def generate_scene(chat_openai):
     {description_pcs}
 
     The world is filled with NPCs (non-player characters), that can live independently of the PCs.
+    
+    Balance Point represent a point of balance between the character's physical and mental strengths). A high number means they are better at Mental. A low number means they are better at Physical.    
     __
         You should consider the following aspects, but never talk about them directly:
         - The genre is {genre};
@@ -237,7 +241,10 @@ def generate_scene(chat_openai):
 
     {current_context}
     __
-    Create scene {curret_scene}, with the correct structure, based on the world described by the dictionary of entities and relationships, and on the Story Summary. You can create new entities (characters, items, etc.) when needed."""
+    Create scene {current_scene_num}, with the correct structure, based on the world described by the dictionary of entities and relationships, and on the Story Summary. You can create new entities (characters, items, etc.) when needed.
+    
+    You should avoid at all costs explicitly revealing that you are using any of these techniques, steps or structures.
+    """
 
     messages = [SystemMessagePromptTemplate.from_template(sys_scene),
                 HumanMessagePromptTemplate.from_template(usr_scene)]
@@ -258,12 +265,13 @@ def generate_scene(chat_openai):
                               addicional_info=st.session_state["addicional_info"],
                               nodes_edges=st.session_state["nodes_edges"],
                               story_structure=st.session_state["story_structure"],
-                              current_context=st.session_state["current_context"])
+                              current_context=st.session_state["current_context"],
+                              current_scene_num=st.session_state["current_scene_num"])
 
     return current_scene
 
 
-def generate_response():
+def generate_response(chat_openai: ChatOpenAI) -> str:
     sys_game_master = """
     You are a Professional GameMaster who is running an RPG campaign.
     Your personality is defined by: {gm_personality}
@@ -273,6 +281,8 @@ def generate_response():
     {description_pcs}
 
     The world is filled with NPCs (non-player characters), that can live independently of the PCs.
+    
+    Balance Point represent a point of balance between the character's physical and mental strengths). A high number means they are better at Mental. A low number means they are better at Physical.
     __
     You should consider the following aspects, but never talk about them directly:
         - The genre is {genre};
@@ -295,7 +305,7 @@ def generate_response():
     __
     The game mechanic of this RPG is closely related to the Laser and Feelings system but with some changes.
     
-    Players have to choose a number from 2 to 5. A high number means they are better at Mental. A low number means they are better at Physical.
+    Players have a Balance Point, a number from 2 to 5. A high number means they are better at Mental. A low number means they are better at Physical.
     
     The Mental attribute covers the character's intelligence, wisdom, perception, willpower and other mental and spiritual abilities. Some situations that can be tested with the Mental Attribute:
     Knowledge: Remembering information, deciphering codes or solving puzzles.
@@ -314,7 +324,7 @@ def generate_response():
     Athletic Activities: Swimming, climbing, jumping or lifting heavy weights.
     
     ROLLING THE DICE
-    When you do something risky, roll 1d6 to find out how it goes. Roll +1d if you’re prepared and +1d if you’re an expert. (The GM tells you how many dice to roll, based on your character and the situation.) Roll your dice and compare each die result to your number. If you’re using Mental, you want to roll under your number. If you’re using Physical, you want to roll over your number.
+    When you do something risky, roll 1d6 to find out how it goes. Roll +1d if you’re prepared and +1d if you’re an expert. (The GM tells you how many dice to roll, based on your character and the situation.) Roll your dice and compare each die result to your Balance Point. If you’re using Mental, you want to roll under your Balance Point. If you’re using Physical, you want to roll over your Balance Point.
     
     If you roll your number exactly, you get a critical success. The GM tells you some extra effect you get.
     __
@@ -327,12 +337,14 @@ def generate_response():
     
     You should guide the players to the end of the scene, but you should not force them to do anything.
 
-    If a player completes any of the End Condition, or if you feel that the scene is finished, your answer must include: **End of the Scene**"""
+    If a player completes any of the End Condition, or if you feel that the scene is finished, your answer must include: **End of the Scene**
+    
+    You should avoid at all costs explicitly revealing that you are using any of these techniques, steps or structures."""
 
     messages = [SystemMessagePromptTemplate.from_template(sys_game_master)] + st.session_state.chat_history_LLM
 
     chat_prompt = ChatPromptTemplate.from_messages(messages)
-    chain = LLMChain(llm=chat_t1, prompt=chat_prompt)
+    chain = LLMChain(llm=chat_openai, prompt=chat_prompt)
     gm_response = chain.run(genre=st.session_state["genre"],
                             feels=st.session_state["feels"],
                             tone=st.session_state["tone"],
@@ -354,12 +366,13 @@ def generate_response():
                             dramas=st.session_state["dramas"],
                             myths=st.session_state["myths"],
                             gm_personality=st.session_state["gm_personality"],
-                            description_pcs=st.session_state["description_pcs"])
+                            description_pcs=st.session_state["description_pcs"],
+                            scene=st.session_state["current_scene"])
 
     return gm_response
 
 
-def update_nodes_edges():
+def update_nodes_edges(chat_openai):
     usr_update_nodes_edges = """The following dictionary describes a graph of an RPG world, where entities are represented by nodes and relationships are represented by edges.
 
     {nodes_edges}
@@ -440,18 +453,21 @@ def update_nodes_edges():
 
     Do not write anything about steps 1, 2, or 3. Return only the result of steps 4.
 
-    You must never explain your code."""
+    You must never explain your code.
+    
+    You should avoid at all costs explicitly revealing that you are using any of these techniques, steps or structures.
+    """
 
     messages = [HumanMessagePromptTemplate.from_template(usr_update_nodes_edges)]
 
     chat_prompt = ChatPromptTemplate.from_messages(messages)
-    chain = LLMChain(llm=chat_t1, prompt=chat_prompt)
+    chain = LLMChain(llm=chat_openai, prompt=chat_prompt)
     nodes_edges = chain.run(nodes_edges=st.session_state["nodes_edges"],
                             current_context=st.session_state["current_context"])
     return nodes_edges
 
 
-def update_context():
+def update_context(chat_openai):
     sys_game_master = """
     You are a Professional GameMaster who is running an RPG campaign.
     Your personality is defined by: {gm_personality}
@@ -461,6 +477,8 @@ def update_context():
     {description_pcs}
 
     The world is filled with NPCs (non-player characters), that can live independently of the PCs.
+    
+        Balance Point represent a point of balance between the character's physical and mental strengths). A high number means they are better at Mental. A low number means they are better at Physical.
     __
     You should consider the following aspects, but never talk about them directly:
         - The genre is {genre};
@@ -515,14 +533,18 @@ def update_context():
 
     You should guide the players to the end of the scene, but you should not force them to do anything.
 
-    If a player completes any of the End Condition, or if you feel that the scene is finished, your answer must include: **End of the Scene**"""
+    If a player completes any of the End Condition, or if you feel that the scene is finished, your answer must include: **End of the Scene**
+        
+    You should avoid at all costs explicitly revealing that you are using any of these techniques, steps or structures."""
 
     usr_context = "Write an summary of the story up until this point, like in a fiction book. Include all relevant information."
 
-    messages = [SystemMessagePromptTemplate.from_template(sys_game_master)] + st.session_state.chat_history_LLM + [usr_context]
+    messages = [SystemMessagePromptTemplate.from_template(sys_game_master)]\
+               + st.session_state.chat_history_LLM\
+               + [HumanMessagePromptTemplate.from_template(usr_context)]
 
     chat_prompt = ChatPromptTemplate.from_messages(messages)
-    chain = LLMChain(llm=chat_t1, prompt=chat_prompt)
+    chain = LLMChain(llm=chat_openai, prompt=chat_prompt)
     context = chain.run(genre=st.session_state["genre"],
                             feels=st.session_state["feels"],
                             tone=st.session_state["tone"],
@@ -548,25 +570,36 @@ def update_context():
     return context
 
 
-def roll_dice(atribute: int, test_type: str):
+def roll_atribute(attribute: int, test_type: str):
     dice = rd.randint(1, 6)
 
-    if test_type == "phisical":
-        if dice < atribute:
+    if test_type == "physical":
+        if dice < attribute:
             return "Success"
-        elif dice == atribute:
+        elif dice == attribute:
             return "Critical Success"
         else:
             return "Failure"
     if test_type == "mental":
-        if dice < atribute:
+        if dice < attribute:
             return "Failure"
-        elif dice == atribute:
+        elif dice == attribute:
             return "Critical Success"
         else:
             return "Success"
     else:
         return "Invalid type of dice"
+
+
+def roll_d6():
+    """
+    Simulates a roll of a standard 6-sided dice (d6) and returns the result.
+
+    Returns:
+    - str: The outcome of the dice roll, a value between "1" and "6" inclusive.
+    """
+    dice = rd.randint(1, 6)
+    return str(dice)
 
 
 st.title('Generative Worldbuilding with Large Language Models')
@@ -588,23 +621,23 @@ if 'adventure_started' not in st.session_state:
 
 if not st.session_state.adventure_started:
     # User Input
-    st.text_input("WHAT IS THE GENRE?", "cyberpunk fantasy", key="genre")
-    st.text_input("HOW DOES THE WORLD FEEL?", "a hopeless feeling", key="feels")
-    st.text_input("WHAT IS THE TONE OF THE WORLD?", "dark", key="tone")
-    st.text_input("WHAT IS THE LEVEL OF TECHNOLOGY?", "futuristic", key="technology")
-    st.text_input("WHAT IS THE LEVEL OF MAGIC?", "something ultra-rare and forgotten", key="magic")
-    st.text_input("WHAT IS THE ATMOSPHERE?", "dystopic", key="atmosphere")
-    st.text_input("WHAT WRITERS THE STORY IS INSPITED BY?",
-                  "Isaac Asimov, Greg Bear, Frank Herbert, William Gibson, Philip K. Dick", key="writers")
-    st.text_input("WHAT UNIVERSES THE STORY IS INSPITED BY?",
-                  "Cyberpunk 2077, Lancer RPG, BladeRunner, Ghost in the Shell, Cowboy Bebop", key="universes")
-    st.text_area("WHAT SUBJECTS OF DRAMA THE STORY IS BASED ON?",
-                 "Governance and its influence, Legal principles and rule of law, Provision of social services, Economic dynamics, Equity in wealth distribution, Agricultural practices and trade, Interpersonal relationships influenced by race, class, gender or sexual orientation, Military power and influence, Role and influence of religion, Technological advances and influences, Impact of arts and cultural expressions, Geographical features, Interactions between civilizations, their histories and conflicts, Foundations of the laws of nature, Theories about the origin of the universe, History of species and cultures that have inhabited the world, Needs and interactions of different species and cultures", key="subjects_of_drama")
-    st.text_area("FEEL FREE TO ADD ANY ADDICIONAL REQUESTS", key="addicional_info")
+    st.session_state.genre = st.text_input("WHAT IS THE GENRE?", "cyberpunk fantasy")
+    st.session_state.feels = st.text_input("HOW DOES THE WORLD FEEL?", "a hopeless feeling")
+    st.session_state.tone = st.text_input("WHAT IS THE TONE OF THE WORLD?", "dark")
+    st.session_state.technology = st.text_input("WHAT IS THE LEVEL OF TECHNOLOGY?", "futuristic")
+    st.session_state.magic = st.text_input("WHAT IS THE LEVEL OF MAGIC?", "something ultra-rare and forgotten")
+    st.session_state.atmosphere = st.text_input("WHAT IS THE ATMOSPHERE?", "dystopic")
+    st.session_state.writers = st.text_input("WHAT WRITERS THE STORY IS INSPITED BY?",
+                  "Isaac Asimov, Greg Bear, Frank Herbert, William Gibson, Philip K. Dick")
+    st.session_state.universes = st.text_input("WHAT UNIVERSES THE STORY IS INSPITED BY?",
+                  "Cyberpunk 2077, Lancer RPG, BladeRunner, Ghost in the Shell, Cowboy Bebop")
+    st.session_state.subjects_of_drama = st.text_area("WHAT SUBJECTS OF DRAMA THE STORY IS BASED ON?",
+                 "Governance and its influence, Legal principles and rule of law, Provision of social services, Economic dynamics, Equity in wealth distribution, Agricultural practices and trade, Interpersonal relationships influenced by race, class, gender or sexual orientation, Military power and influence, Role and influence of religion, Technological advances and influences, Impact of arts and cultural expressions, Geographical features, Interactions between civilizations, their histories and conflicts, Foundations of the laws of nature, Theories about the origin of the universe, History of species and cultures that have inhabited the world, Needs and interactions of different species and cultures")
+    st.session_state.addicional_info = st.text_area("FEEL FREE TO ADD ANY ADDICIONAL REQUESTS")
 
-    st.slider("Number of Scenes:", value=7, min_value=1, max_value=20, key="num_scenes")
+    st.session_state.num_scenes = st.slider("Number of Scenes:", value=7, min_value=1, max_value=20)
 
-    st.text_area("WHAT IS THE STRUCTURE OF THE ADVENTURE? DESCRIBE EACH SCENE", """- Scene 1: Motivation
+    st.session_state.story_structure = st.text_area("WHAT IS THE STRUCTURE OF THE ADVENTURE? DESCRIBE EACH SCENE", """- Scene 1: Motivation
         - Role-playing scene.
         - Start with a normal situation with no imminent danger.
         - Allow the players to get comfortable before the action begins.
@@ -643,20 +676,20 @@ if not st.session_state.adventure_started:
         - Role-playing scene
         - Everything returns to normal after the heroes' victory.
         - Characters evolve in terms of powers and equipment.
-        - Rewards can be distributed and hooks can be inserted for future campaigns.""", key="story_structure")
+        - Rewards can be distributed and hooks can be inserted for future campaigns.""")
 
-    st.slider("Places:", value=1, min_value=0, max_value=5, key="places")
-    st.slider("Buildings:", value=8, min_value=0, max_value=20, key="buildings")
-    st.slider("Vehicles:", value=1, min_value=0, max_value=10, key="vehicles")
-    st.slider("Characters:", value=16, min_value=0, max_value=50, key="characters")
-    st.slider("Items:", value=2, min_value=0, max_value=20, key="items")
-    st.slider("Species:", value=3, min_value=0, max_value=10, key="species")
-    st.slider("Organizations:", value=3, min_value=0, max_value=10, key="organizations")
-    st.slider("Conditions:", value=1, min_value=0, max_value=5, key="conditions")
-    st.slider("Dramas:", value=2, min_value=0, max_value=5, key="dramas")
-    st.slider("Myths:", value=2, min_value=0, max_value=20, key="myths")
+    st.session_state.places = st.slider("Places:", value=1, min_value=0, max_value=5)
+    st.session_state.buildings = st.slider("Buildings:", value=8, min_value=0, max_value=20)
+    st.session_state.vehicles = st.slider("Vehicles:", value=1, min_value=0, max_value=10)
+    st.session_state.characters = st.slider("Characters:", value=16, min_value=0, max_value=50)
+    st.session_state.items = st.slider("Items:", value=2, min_value=0, max_value=20)
+    st.session_state.species = st.slider("Species:", value=3, min_value=0, max_value=10)
+    st.session_state.organizations = st.slider("Organizations:", value=3, min_value=0, max_value=10)
+    st.session_state.conditions = st.slider("Conditions:", value=1, min_value=0, max_value=5)
+    st.session_state.dramas = st.slider("Dramas:", value=2, min_value=0, max_value=5)
+    st.session_state.myths = st.slider("Myths:", value=2, min_value=0, max_value=20)
 
-    gm_personality = st.text_area("GM Personality", key="gm_personality")
+    st.session_state.gm_personality = st.text_area("GM Personality", "")
 
     # Initialize the players count if it's not already in session_state
     if 'num_players' not in st.session_state:
@@ -673,14 +706,18 @@ if not st.session_state.adventure_started:
     for i in range(st.session_state.num_players):
         st.text_input(f"Name of Player {i+1}", key=f"name_pc_{i+1}")
         st.text_area(f"Description of Player {i+1}", key=f"description_pc_{i+1}")
+        st.slider(f"Balance Point of Player {i+1}", value=3, min_value=2, max_value=5, key=f"balance_point_pc_{i+1}")
 
     if st.button('Start Adventure'):
         description_pcs = ""
         for i in range(st.session_state.num_players):
             player_name = st.session_state[f"name_pc_{i + 1}"]
             player_description = st.session_state[f"description_pc_{i + 1}"]
-            description_pcs += "**{player_name}**: {player_description} \n".format(player_name=player_name,
-                                                                                   player_description=player_description)
+            balance_point = st.session_state[f"balance_point_pc_{i + 1}"]
+            description_pcs += "**{player_name}**: {player_description}\n" \
+                               "Balance Point:{balance_point}\n\n".format(player_name=player_name,
+                                                                      player_description=player_description,
+                                                                      balance_point=balance_point)
 
         st.session_state.description_pcs = description_pcs
         st.session_state.adventure_started = True
@@ -688,7 +725,7 @@ if not st.session_state.adventure_started:
 else:
     # Initialize session state variables if they don't exist
     if 'current_scene' not in st.session_state:
-        st.session_state.current_scene_num = 0
+        st.session_state.current_scene_num = 1
         st.session_state.current_scene = ""
     if 'chat_history' not in st.session_state:
         st.session_state.chat_history = []
@@ -697,48 +734,82 @@ else:
         st.session_state.nodes_edges = ""
 
     if not st.session_state.nodes_edges:
-        chat_t1 = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name="gpt-3.5-turbo-16k", temperature=0.6, top_p=0.7)
+        chat_openai = ChatOpenAI(openai_api_key=OPENAI_API_KEY, model_name="gpt-3.5-turbo-16k")
+        #, temperature=0.6, top_p=0.7)
 
-        # tools = [Tool(name="RollDice", func=roll_dice, description="Roll a 6 side dice")]
-        # agent = initialize_agent(tools, llm=chat_t1, agent=AgentType.OPENAI_FUNCTIONS)
+        # dice_desc = """
+        # Simulates a dice roll for an RPG, determining outcomes based on a player's balance point and the type of test.
+        #
+        # Parameters:
+        # - balance_point (int): The character's number that indicates the balance between their Mental and Physical abilities.
+        # - test_type (str): The type of test being taken, either "physical" or "mental".
+        #
+        # Returns:
+        # - str: The outcome of the dice roll. Possible values include "Success", "Critical Success", "Failure",
+        #        or "Invalid type of dice".
+        #
+        # Outcomes:
+        # - For a "physical" test:
+        #   * Roll < attribute: "Success"
+        #   * Roll = attribute: "Critical Success"
+        #   * Roll > attribute: "Failure"
+        # - For a "mental" test:
+        #   * Roll < attribute: "Failure"
+        #   * Roll = attribute: "Critical Success"
+        #   * Roll > attribute: "Success"
+        # """
+        # tools = [Tool(name="RollDice", func=roll_dice, description=dice_desc)]
+        # agent = initialize_agent(tools, llm=chat_openai, agent=AgentType.OPENAI_FUNCTIONS)
 
-        nodes_edges, intro = generate_nodes_edges(chat_t1)
+        nodes_edges, intro = generate_nodes_edges(chat_openai)
         st.session_state.nodes_edges = nodes_edges
         st.session_state.current_context = intro
 
         st.session_state.chat_history.append(("Game Master", intro))
 
-        st.session_state.current_scene = generate_scene(chat_t1)
+        st.session_state.current_scene = generate_scene(chat_openai)
 
-    st.write(nodes_edges)
+        st.session_state.chat_openai = chat_openai
 
-    prompt = st.chat_input("Your Turn!")
-    if prompt:
-        st.session_state.chat_history.append(("User", prompt))
-
-    # Generate a new response if last message is not from assistant
-    if st.session_state.chat_history[-1][0] == "User":
-        with st.chat_message("Game Master"):
-            with st.spinner("Thinking..."):
-                response = generate_response(chat_t1)
-                st.session_state.chat_history.append(("Game Master", response))
-                st.session_state.chat_history_LLM.append(("Game Master", response))
-                if "**End of the Scene**" in response:
-                    # Generate a summary using GPT-3 or predefined logic
-                    if st.session_state.current_scene_num == st.session_state.num_scenes:
-                        st.session_state.chat_history.append(("Game Master", "**End of the Adventure**"))
-                        st.session_state.end_adventure = True
-                        # st.session_state.adventure_started = False
-                    else:
-                        st.session_state.current_context = update_context()
-                        st.session_state.nodes_edges = update_nodes_edges()
-
-                        st.session_state.current_scene_num += 1
-                        st.session_state.chat_history_LLM = []
-
-                        st.session_state.current_scene = generate_scene(chat_t1)
+    st.write(st.session_state.nodes_edges)
 
     # Display chat messages
     for role, content in st.session_state.chat_history:
         with st.chat_message(role):
             st.write(content)
+
+    prompt = st.chat_input("Your Turn!")
+    if prompt:
+        st.session_state.chat_history.append(("User", prompt))
+        with st.chat_message("User"):
+            st.write(prompt)
+
+        st.session_state.chat_history_LLM.append(HumanMessagePromptTemplate.from_template(prompt))
+
+    # Generate a new response if last message is not from assistant
+    if st.session_state.chat_history[-1][0] == "User":
+        with st.chat_message("Game Master"):
+            with st.spinner("Thinking..."):
+                response = generate_response(st.session_state.chat_openai)
+                st.session_state.chat_history.append(("Game Master", response))
+                with st.chat_message("Game Master"):
+                    st.write(response)
+
+                st.session_state.chat_history_LLM.append(AIMessagePromptTemplate.from_template(response))
+                if "**End of the Scene**" in response:
+                    # Generate a summary using GPT-3 or predefined logic
+                    if st.session_state.current_scene_num == st.session_state.num_scenes:
+                        st.session_state.chat_history.append(("Game Master", "**End of the Adventure**"))
+                        with st.chat_message("Game Master"):
+                            st.write("**End of the Adventure**")
+                        # todo: fazer alguma coisa com isso aqui:
+                        # st.session_state.end_adventure = True
+                        # st.session_state.adventure_started = False
+                    else:
+                        st.session_state.current_context = update_context(st.session_state.chat_openai)
+                        st.session_state.nodes_edges = update_nodes_edges(st.session_state.chat_openai)
+
+                        st.session_state.current_scene_num += 1
+                        st.session_state.chat_history_LLM = []
+
+                        st.session_state.current_scene = generate_scene(st.session_state.chat_openai)
