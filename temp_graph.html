@@ -1,0 +1,155 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 600px;
+                 background-color: #333333;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    </head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "red", "font": {"color": "white"}, "id": "The City of Neo-Vale", "label": "The City of Neo-Vale", "shape": "dot", "title": "A sprawling metropolis in a cyberpunk fantasy world. Neo-Vale is a city of towering skyscrapers, neon lights, and dark alleyways. It is a hub of technological advancements, but also a place of extreme social inequality and despair."}, {"color": "blue", "font": {"color": "white"}, "id": "The Sable Tower", "label": "The Sable Tower", "shape": "dot", "title": "A massive skyscraper in Neo-Vale that serves as the headquarters of the powerful corporation known as Sable Corp. The tower is a symbol of wealth and influence, towering over the rest of the city."}, {"color": "blue", "font": {"color": "white"}, "id": "The Slum District", "label": "The Slum District", "shape": "dot", "title": "A run-down and overcrowded district in Neo-Vale where the city\u0027s poorest residents live. The Slum District is characterized by dilapidated buildings, crime, and desperation."}, {"color": "blue", "font": {"color": "white"}, "id": "The Cybernetics Lab", "label": "The Cybernetics Lab", "shape": "dot", "title": "A state-of-the-art facility in Neo-Vale where cutting-edge cybernetic enhancements are developed and tested. The lab is a hub of technological innovation and scientific research."}, {"color": "blue", "font": {"color": "white"}, "id": "The Night Market", "label": "The Night Market", "shape": "dot", "title": "An underground marketplace in Neo-Vale where illegal goods and services are sold. The Night Market is a haven for criminals, hackers, and those who operate outside the law."}, {"color": "blue", "font": {"color": "white"}, "id": "The Red Light District", "label": "The Red Light District", "shape": "dot", "title": "A district in Neo-Vale known for its seedy establishments and adult entertainment. The Red Light District is a place of vice and indulgence, catering to the city\u0027s wealthy elite."}, {"color": "blue", "font": {"color": "white"}, "id": "The Outskirts", "label": "The Outskirts", "shape": "dot", "title": "The outskirts of Neo-Vale are a desolate and dangerous wasteland. This area is home to various nomadic tribes, scavengers, and mutated creatures. It is a lawless and unforgiving place."}, {"color": "blue", "font": {"color": "white"}, "id": "The Cathedral of Technomancy", "label": "The Cathedral of Technomancy", "shape": "dot", "title": "A massive cathedral located in the heart of Neo-Vale. The Cathedral of Technomancy is the spiritual center for those who worship technology and seek enlightenment through cybernetic enhancements."}, {"color": "blue", "font": {"color": "white"}, "id": "The Junkyard", "label": "The Junkyard", "shape": "dot", "title": "A sprawling junkyard on the outskirts of Neo-Vale. This is where discarded technology and cybernetic implants end up. It is a treasure trove for scavengers and those looking to salvage parts."}, {"color": "yellow", "font": {"color": "white"}, "id": "The Neon Racer", "label": "The Neon Racer", "shape": "dot", "title": "A sleek and futuristic hoverbike used by thrill-seekers and street racers in Neo-Vale. The Neon Racer is known for its speed and agility, making it the vehicle of choice for those who live life on the edge."}, {"color": "green", "font": {"color": "white"}, "id": "Alexis Gravewalker", "label": "Alexis Gravewalker", "shape": "dot", "title": "A brooding and mysterious bounty hunter with a cybernetic arm. Alexis Gravewalker is known for her deadly accuracy and relentless pursuit of her targets. She operates in the shadows, taking on dangerous assignments for the right price."}, {"color": "green", "font": {"color": "white"}, "id": "Drake Ironheart", "label": "Drake Ironheart", "shape": "dot", "title": "A brilliant and eccentric scientist who specializes in cybernetic enhancements. Drake Ironheart is the owner of the Cybernetics Lab and is constantly pushing the boundaries of technology. He is driven by a desire to merge man and machine."}, {"color": "purple", "font": {"color": "white"}, "id": "Sable Corp", "label": "Sable Corp", "shape": "dot", "title": "A powerful and influential corporation in Neo-Vale. Sable Corp is known for its cutting-edge technology and its control over various aspects of the city\u0027s infrastructure. They have a strong presence in both the legal and illegal sectors."}, {"color": "purple", "font": {"color": "white"}, "id": "The Crimson Syndicate", "label": "The Crimson Syndicate", "shape": "dot", "title": "A notorious criminal organization that operates in Neo-Vale. The Crimson Syndicate is involved in various illegal activities, including smuggling, assassination, and data theft. They have a vast network of operatives and informants."}, {"color": "purple", "font": {"color": "white"}, "id": "The Order of the Technomancers", "label": "The Order of the Technomancers", "shape": "dot", "title": "A secretive cult of technomancers who worship technology as a divine force. The Order of the Technomancers believes that cybernetic enhancements can elevate humanity to a higher state of existence. They operate from within the Cathedral of Technomancy."}, {"color": "purple", "font": {"color": "white"}, "id": "The Shadows", "label": "The Shadows", "shape": "dot", "title": "A mysterious group of hackers and information brokers who operate in the shadows of Neo-Vale. The Shadows are known for their expertise in cyber warfare and their ability to manipulate the city\u0027s digital infrastructure. They are a constant thorn in the side of Sable Corp."}, {"color": "cyan", "font": {"color": "white"}, "id": "The Neo-Elves", "label": "The Neo-Elves", "shape": "dot", "title": "A reclusive and enigmatic species that once ruled over vast territories in Neo-Vale. The Neo-Elves possess advanced knowledge of magic and technology, but they have withdrawn from the rest of society, choosing to live in isolation."}, {"color": "cyan", "font": {"color": "white"}, "id": "The Cyborgs", "label": "The Cyborgs", "shape": "dot", "title": "A group of individuals who have undergone extensive cybernetic enhancements. The Cyborgs are a diverse group, ranging from those who voluntarily embrace technology to those who have been forced into it. They are often marginalized and discriminated against in society."}, {"color": "cyan", "font": {"color": "white"}, "id": "The Mutants", "label": "The Mutants", "shape": "dot", "title": "Beings who have been mutated by the harsh conditions of the wasteland surrounding Neo-Vale. The Mutants possess various physical and genetic abnormalities, making them outcasts in society. They are often shunned and feared by others."}, {"color": "purple", "font": {"color": "white"}, "id": "The Council of Neo-Vale", "label": "The Council of Neo-Vale", "shape": "dot", "title": "The governing body of Neo-Vale. The Council is composed of influential individuals from various sectors, including business, politics, and technology. They make decisions that shape the future of the city, but their motives are often shrouded in secrecy."}, {"color": "purple", "font": {"color": "white"}, "id": "The Rebellion", "label": "The Rebellion", "shape": "dot", "title": "A group of individuals who oppose the oppressive rule of Sable Corp and seek to bring about change in Neo-Vale. The Rebellion is composed of hackers, activists, and disillusioned citizens. They operate from hidden bases in the Slum District."}, {"color": "gray", "font": {"color": "white"}, "id": "The Great War", "label": "The Great War", "shape": "dot", "title": "A devastating conflict that engulfed Neo-Vale in the past. The Great War was fought between various factions vying for control over the city\u0027s resources and power. The war resulted in widespread destruction and loss of life."}, {"color": "gray", "font": {"color": "white"}, "id": "The Divide", "label": "The Divide", "shape": "dot", "title": "A growing divide between the wealthy elite and the impoverished masses in Neo-Vale. The Divide is a source of social unrest and tension, with the rich exploiting the poor for their own gain. It has led to widespread discontent and the rise of radical movements."}, {"color": "gray", "font": {"color": "white"}, "id": "The Forgotten Magic", "label": "The Forgotten Magic", "shape": "dot", "title": "A myth that speaks of a time when magic was abundant in Neo-Vale. According to the myth, a cataclysmic event caused the magic to fade from the world, leaving only remnants of its power. The Forgotten Magic is said to hold the key to unlocking the true potential of the city."}, {"color": "gray", "font": {"color": "white"}, "id": "The Prophecy of the Neon Phoenix", "label": "The Prophecy of the Neon Phoenix", "shape": "dot", "title": "A prophetic tale that foretells the coming of a savior who will bring balance to Neo-Vale. The Prophecy of the Neon Phoenix speaks of a figure with cybernetic wings who will rise from the ashes of despair and lead the city into a new era of hope."}]);
+                  edges = new vis.DataSet([{"color": "lightgray", "from": "The Sable Tower", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Slum District", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Cybernetics Lab", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Night Market", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Red Light District", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Outskirts", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Cathedral of Technomancy", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Junkyard", "title": "IS_IN", "to": "The Outskirts"}, {"color": "lightgray", "from": "Alexis Gravewalker", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "Drake Ironheart", "title": "IS_IN", "to": "The Cybernetics Lab"}, {"color": "lightgray", "from": "Sable Corp", "title": "IS_IN", "to": "The Sable Tower"}, {"color": "lightgray", "from": "The Crimson Syndicate", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Order of the Technomancers", "title": "IS_IN", "to": "The Cathedral of Technomancy"}, {"color": "lightgray", "from": "The Shadows", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Neo-Elves", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Cyborgs", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Mutants", "title": "IS_IN", "to": "The Outskirts"}, {"color": "lightgray", "from": "The Council of Neo-Vale", "title": "IS_IN", "to": "The City of Neo-Vale"}, {"color": "lightgray", "from": "The Rebellion", "title": "IS_IN", "to": "The Slum District"}, {"color": "yellow", "from": "The Great War", "title": "AFFECTED_BY", "to": "The City of Neo-Vale"}, {"color": "yellow", "from": "The Divide", "title": "AFFECTED_BY", "to": "The City of Neo-Vale"}, {"color": "cyan", "from": "The Forgotten Magic", "title": "BASED_ON", "to": "The City of Neo-Vale"}, {"color": "cyan", "from": "The Prophecy of the Neon Phoenix", "title": "BASED_ON", "to": "The City of Neo-Vale"}, {"color": "red", "from": "Alexis Gravewalker", "title": "NEGATIVE_RELATIONSHIP", "to": "The Crimson Syndicate"}, {"color": "gray", "from": "Alexis Gravewalker", "title": "NEUTRAL_RELATIONSHIP", "to": "The Shadows"}, {"color": "gray", "from": "Drake Ironheart", "title": "NEUTRAL_RELATIONSHIP", "to": "Sable Corp"}, {"color": "red", "from": "The Rebellion", "title": "NEGATIVE_RELATIONSHIP", "to": "Sable Corp"}, {"color": "red", "from": "The Rebellion", "title": "NEGATIVE_RELATIONSHIP", "to": "The Council of Neo-Vale"}, {"color": "blue", "from": "The Neo-Elves", "title": "MEMBER_OF", "to": "The Forgotten Magic"}, {"color": "pink", "from": "The Great War", "title": "PRECEDES", "to": "The Divide"}, {"color": "pink", "from": "The Divide", "title": "PRECEDES", "to": "The Rebellion"}, {"color": "purple", "from": "The Forgotten Magic", "title": "SUCCEEDS", "to": "The Prophecy of the Neon Phoenix"}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {
+    "configure": {
+        "enabled": false
+    },
+    "edges": {
+        "color": {
+            "inherit": true
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
