@@ -1,0 +1,180 @@
+2023-09-14 18:41:48,078 - root - INFO - Application started.
+2023-09-14 20:19:34,443 - root - INFO - Start Adventure button pressed.
+2023-09-14 20:27:28,761 - root - INFO - User prompt received: Let's start the adventure!
+2023-09-14 20:27:28,762 - __main__ - INFO - User: Let's start the adventure!
+2023-09-14 20:27:28,762 - root - INFO - Generating a new response for user.
+2023-09-14 20:27:39,402 - __main__ - INFO - Game Master: *The bustling streets of Eldoria come to life as the trio enters the vibrant marketplace. The air is filled with the aroma of various exotic spices and the sounds of merchants calling out their products. The colorful stalls are lined with a myriad of goods, from shimmering fabrics to sparkling jewelry.*
+
+*Ragnarok Spearson, Henrich the Summoner, and Golem K find themselves in the midst of the crowd, surrounded by the hustle and bustle of everyday life. As they navigate through the marketplace, their eyes are drawn to an intriguing figure approaching them.*
+
+*The hooded figure, their face obscured by shadows, moves with purpose through the throng of people. With a sense of urgency, they hand Ragnarok a sealed letter and vanish into the crowd, leaving the trio intrigued and curious.*
+
+*Ragnarok, his curiosity piqued, breaks the seal and reads the message. The urgency in his eyes grows as he shares the contents with his companions, filling them with a sense of duty and purpose. The letter is an urgent plea for help from High Priestess Elara of the Temple of the Four Winds. The temple has been plagued by dark omens and disturbing visions, and Elara believes that the fate of Veridion may hang in the balance.*
+
+*With determination in their hearts, the trio sets forth towards the Temple of the Four Winds, ready to face whatever challenges lie ahead. They make their way through the bustling marketplace, weaving through the crowd, as they follow the path that will lead them to their first step on this grand adventure.*
+
+*As they walk, Ragnarok glances at his companions, his eyes filled with excitement and a hint of mischief. Henrich, lost in thought, clutches his spellbook tightly, preparing his mind for the journey ahead. Golem K, ever stoic, follows closely behind, scanning the surroundings with his glowing blue eyes.*
+
+*The sun shines brightly overhead as they approach the grand entrance of the temple, its towering spires reaching towards the heavens. The call to adventure echoes in their hearts, urging them forward as they step into the unknown.*
+
+*Ragnarok takes a deep breath, his eyes gleaming with anticipation, and with a nod to his companions, they step through the temple gates, ready to face the mysteries and challenges that await them.*
+
+*End of the Scene*
+2023-09-14 20:49:09,160 - root - INFO - Application started.
+2023-09-14 20:57:35,607 - root - INFO - Start Adventure button pressed.
+2023-09-14 20:57:36,801 - openai - INFO - error_code=model_not_found error_message='The model `gpt-4-32k` does not exist or you do not have access to it. Learn more: https://help.openai.com/en/articles/7102672-how-can-i-access-gpt-4.' error_param=None error_type=invalid_request_error message='OpenAI API error received' stream_error=False
+2023-09-14 21:08:02,056 - root - INFO - User prompt received: Let's start the adventure!
+2023-09-14 21:08:02,057 - __main__ - INFO - User: Let's start the adventure!
+2023-09-14 21:08:02,057 - root - INFO - Generating a new response for user.
+2023-09-14 21:08:14,693 - __main__ - INFO - Game Master: The Iron Citadel roars with mirth and merriment, a beacon of warmth amidst the cold winds of Astra. Ragnarok Spearson, you find yourself amidst the boisterous Ironborn, their camaraderie a familiar comfort. The feast around you buzzes with life, the air thick with the scent of hearty food and mead. As you raise a goblet to your lips, whispers reach your ears - whispers of a storm, unnatural and ferocious, brewing over the Craggy Peaks. It seems the Skyweavers are at a loss to control it. Your attention then shifts to Thane Hrothgar, the grizzled leader of the Ironborn, as he raises his goblet, signaling for silence. His words carry a grave request for a band of brave souls to venture to the Craggy Peaks and aid the Skyweavers. All eyes turn to you, their chosen champion. What do you do?
+
+2023-09-14 21:15:22,025 - root - INFO - User prompt received: Ragnarok Spearson grabs his drink fiercely, takes a good swig and head for the door, without speaking a word
+2023-09-14 21:15:22,025 - __main__ - INFO - User: Ragnarok Spearson grabs his drink fiercely, takes a good swig and head for the door, without speaking a word
+2023-09-14 21:15:22,026 - root - INFO - Generating a new response for user.
+2023-09-14 21:15:32,639 - __main__ - INFO - Game Master: Ragnarok Spearson, your goblet clutched in your hand, you down your drink with a fierce determination. The mead burns a path down your throat, fueling the fire in your belly. Without a word, you make your way towards the door, your stride purposeful, your mind set on the mission at hand. A murmur runs through the hall as you exit, leaving a trail of anticipation and respect in your wake. As the doors of the grand hall close behind you, the Ironborn break into a cheer, their voices echoing in the night, their faith in their champion unwavering. **End of the Scene**
+2023-09-14 21:15:32,639 - root - INFO - End of the scene detected.
+2023-09-14 21:17:42,125 - root - INFO - User prompt received: And what now?
+2023-09-14 21:17:42,125 - __main__ - INFO - User: And what now?
+2023-09-14 21:17:42,125 - root - INFO - Generating a new response for user.
+2023-09-14 21:18:18,776 - __main__ - INFO - Game Master: ### Scene 2:
+- **Title:** The Summoner's Quest
+- **Location:** The Wandering Library
+- **Scene Description:**
+
+Deep within the labyrinthine corridors of the Wandering Library, Henrich, the Cursed Child, navigates the towering shelves overflowing with ancient tomes and dusty scrolls. The air is thick with the scent of old parchment and the faint glow of enchanted lanterns casts long, dancing shadows on the walls. Here, Henrich hopes to find a clue, a hint, anything that could help him understand the whispers that plague his mind, the ethereal echoes of his ancestors' ill-conceived pacts.
+
+A riddle scrawled in an ancient tome catches Henrich's attention. It speaks of a celestial convergence, a rare alignment of the stars and the elements that could amplify a summoner's powers or drive them to madness. Could this be connected to the escalating War of the Elements and the storm brewing in the Craggy Peaks?
+
+- **NPCs**:
+1) Ildara, The Librarian:
+    1.1) Description: A knowledgeable and enigmatic being who oversees the Wandering Library.
+    1.2) Special Ability: Lore Keeper - Can recall any piece of information stored within the library.
+    1.3) Appearance: She is tall and lean, with pale skin and hair the color of moonlight. Her eyes are like two sapphires, sparkling with wisdom.
+
+- **Battlemap Description**:
+    - Henrich stands in the heart of the Wandering Library, surrounded by shelves filled with countless books.
+    - Ildara, The Librarian, is at the far end of the room, organizing some scrolls.
+    - The library is dimly lit by enchanted lanterns, casting eerie shadows on the walls.
+    - Ancient tomes, scrolls, and artifacts are scattered across the library, waiting to be explored.
+    - A large celestial map is displayed on one of the walls, showing the current alignment of the stars.
+
+- **End Condition:**
+    - Henrich manages to decipher the riddle and understands its connection to the events unfolding.
+    - Ildara provides a clue that aids in Henrich's research.
+    - Henrich decides to leave the library and seek answers elsewhere.
+
+Now, Henrich, the Cursed Child, you find yourself in the heart of this bibliophile's paradise, an ancient riddle in hand. Its cryptic words speak of celestial events and elemental chaos. Could it hold the key to understanding the turmoil that grips the land? What do you do?
+2023-09-14 21:23:32,947 - root - INFO - User prompt received: Henrich tries to think about his previous knowledges to try to understand how the riddle affects him. 
+2023-09-14 21:23:32,948 - __main__ - INFO - User: Henrich tries to think about his previous knowledges to try to understand how the riddle affects him. 
+2023-09-14 21:23:32,948 - root - INFO - Generating a new response for user.
+2023-09-14 21:23:39,037 - __main__ - INFO - Game Master: Henrich, you delve deep into your well of knowledge, your mind whirling as you pore over the riddle. Your understanding of the elemental and celestial forces at play, along with your family's long history with summoning, lends you an edge. Roll 2 dice for a Mental test to see if you manage to decipher the riddle.
+2023-09-14 21:24:31,592 - root - INFO - User prompt received: I rolled 6 and 4
+2023-09-14 21:24:31,592 - __main__ - INFO - User: I rolled 6 and 4
+2023-09-14 21:24:31,592 - root - INFO - Generating a new response for user.
+2023-09-14 21:24:39,810 - __main__ - INFO - Game Master: With your Balance Point of 5, you successfully manage to decipher part of the riddle. The celestial convergence mentioned seems to coincide with the current alignment of the stars displayed on the library's celestial map. This could mean that the elemental chaos, the War of Elements, is intrinsically linked to this rare celestial event. However, how it directly affects you or your abilities remains a mystery. Perhaps speaking to Ildara, the Librarian, can provide additional insights. What do you do next?
+2023-09-14 21:26:31,765 - root - INFO - User prompt received: I speak to Ildara:
+- Hi Ildara. The celestial convergence mentioned seems to coincide with the current alignment of the stars displayed on the library's celestial map. This could mean that the elemental chaos, the War of Elements, is intrinsically linked to this rare celestial event.
+2023-09-14 21:26:31,766 - __main__ - INFO - User: I speak to Ildara:
+- Hi Ildara. The celestial convergence mentioned seems to coincide with the current alignment of the stars displayed on the library's celestial map. This could mean that the elemental chaos, the War of Elements, is intrinsically linked to this rare celestial event.
+2023-09-14 21:26:31,766 - root - INFO - Generating a new response for user.
+2023-09-14 21:26:40,994 - __main__ - INFO - Game Master: Ildara looks up from the scroll she's been reading, her sapphire eyes sharp and thoughtful. "Indeed, Henrich," she acknowledges, her voice echoing slightly in the vast expanse of the library. "Such celestial events have been known to amplify magical energies, causing imbalance in the elemental forces. Your summoning abilities may be affected by this. Remember, knowledge is power and caution is key. It's best to prepare for any possible effects this celestial event could have." With her advice given, Ildara returns to her tasks, leaving you to contemplate her words. **End of the Scene**
+2023-09-14 21:26:40,994 - root - INFO - End of the scene detected.
+2023-09-14 21:30:35,052 - root - INFO - User prompt received: and now what?
+2023-09-14 21:30:35,053 - __main__ - INFO - User: and now what?
+2023-09-14 21:30:35,053 - root - INFO - Generating a new response for user.
+2023-09-14 21:31:08,475 - __main__ - INFO - Game Master: ### Scene 3:
+- **Title:** The Waking Golem
+- **Location:** Tallaka's Lab, now in ruins
+- **Scene Description:**
+
+Tucked away in a forgotten corner of the bustling city of Eryndor, Tallaka's lab lies in ruins, a shadow of its former glory. Here, Golem K wakes from a deep sleep, his command to awake triggered by the opening of his chamber. The once vibrant lab, filled with bubbling concoctions and humming machinery, now stands silent and abandoned. 
+
+As Golem K, you find yourself amidst the wreckage, the faint smell of old magic lingering in the air. The lab, your home, is a mess of shattered glass and twisted metal. The only thing that remains untouched is a small, intricately crafted device, humming softly with residual energy. 
+
+- **NPCs**: 
+1) Tallaka's Echo:
+    1.1) Description: A magical echo of Tallaka, Golem K's creator. It holds Tallaka's memories and can provide guidance.
+    1.2) Special Ability: Recall - Can provide information from Tallaka's memories.
+    1.3) Appearance: A faintly glowing orb of light, usually hidden unless activated.
+
+- **Battlemap Description**:
+    - Golem K stands in the center of the ruined lab, amidst the wreckage.
+    - Tallaka's Echo is currently dormant, hidden away in a corner of the lab.
+    - The lab is filled with broken machinery, shattered glass, and remnants of magical experiments.
+    - The device is on a table near Golem K, glowing faintly.
+
+- **End Condition:**
+    - Golem K investigates the device and discovers its purpose.
+    - Golem K activates Tallaka's Echo and learns more about what happened.
+    - Golem K decides to leave the lab and explore the outside world.
+
+Now, Golem K, you stand amidst the remnants of your past, a strange device humming softly nearby. Your creator's echo remains dormant, its light hidden amidst the wreckage. What do you do?
+2023-09-14 21:32:15,771 - root - INFO - User prompt received: I look around. What do I see?
+2023-09-14 21:32:15,772 - __main__ - INFO - User: I look around. What do I see?
+2023-09-14 21:32:15,772 - root - INFO - Generating a new response for user.
+2023-09-14 21:32:27,081 - __main__ - INFO - Game Master: As Golem K, you scan your surroundings. The lab is a shell of what it once was - tables overturned, scientific instruments shattered, and the air tinged with a sense of loss. In the dim light, you can make out the outlines of various magical apparatus, their purpose now lost in the chaos. Against one wall, a grand chalkboard stands, covered in faded equations and diagrams, a testament to the genius that once resided here. On a table nearby, a device hums softly, its glow a faint beacon amidst the gloom. In one corner, you spot a faint glow - the dormant form of Tallaka's Echo, waiting to be activated. The outside world beckons from beyond the lab's broken windows, an unfamiliar landscape for you to navigate. What do you do next?
+2023-09-14 21:34:53,087 - root - INFO - User prompt received: I try to activate the Tallaka's Echo
+2023-09-14 21:34:53,088 - __main__ - INFO - User: I try to activate the Tallaka's Echo
+2023-09-14 21:34:53,088 - root - INFO - Generating a new response for user.
+2023-09-14 21:34:58,447 - __main__ - INFO - Game Master: As Golem K, you approach the dormant form of Tallaka's Echo. Despite the chaos around you, the echo remains a constant, its light steady and comforting. You reach out, your hand phasing through the orb of light. Roll 1 die for a Mental test to see if you manage to activate Tallaka's Echo.
+2023-09-14 21:35:28,593 - root - INFO - User prompt received: I rolled 2
+2023-09-14 21:35:28,593 - __main__ - INFO - User: I rolled 2
+2023-09-14 21:35:28,593 - root - INFO - Generating a new response for user.
+2023-09-14 21:35:37,972 - __main__ - INFO - Game Master: With your Balance Point of 4, you successfully manage to activate Tallaka's Echo. The orb of light grows brighter, and a voice fills the lab, soft and familiar. It's Tallaka, or an echo of her. The voice recounts the day of the pivotal experiment, the surge of raw magical energy, and your subsequent deactivation for safety. It seems the lab's ruin was a result of that very experiment. The echo fades out leaving you with a sense of purpose. You must find out what went wrong that day, and perhaps, find a way to prevent such disasters in the future. **End of the Scene**
+2023-09-14 21:35:37,972 - root - INFO - End of the scene detected.
+2023-09-14 21:38:52,850 - root - INFO - User prompt received: Continue
+2023-09-14 21:38:52,850 - __main__ - INFO - User: Continue
+2023-09-14 21:38:52,851 - root - INFO - Generating a new response for user.
+2023-09-14 21:39:30,738 - __main__ - INFO - Game Master: ### Scene 4:
+- **Title:** The Stronghold's Heart
+- **Location:** The Dwarven Stronghold of Thundertop
+- **Scene Description:**
+
+In the heart of the Dwarven Stronghold of Thundertop, amidst the echoing clang of hammers and the fiery glow of forges, Alagor, the Sweetheart, is hard at work. His hands, though thick and calloused, move with surprising nimbleness, crafting a masterpiece out of raw metal. His heart, however, is heavy. Recent news from the surface speaks of a growing storm in the Craggy Peaks, a storm unlike any other. The Dwarves, though masters of the earth, know little of the sky and its tempests.
+
+Suddenly, a messenger arrives, panting and wide-eyed. He brings news of an approaching Ironborn, a warrior named Ragnarok Spearson, who seeks aid in his mission to the Craggy Peaks. Could this be the opportunity Alagor needs to make a difference?
+
+- **NPCs**:
+1) Thane Grimsbane:
+    1.1) Description: The leader of the Dwarven Stronghold of Thundertop, known for his strength and wisdom.
+    1.2) Special Ability: Stoneform - Can turn his skin as hard as stone, making him impervious to physical harm.
+    1.3) Appearance: Short and stout, with a thick beard and a muscular build.
+
+- **Battlemap Description**:
+    - Alagor is at his forge, surrounded by tools and the glow of hot metal.
+    - Thane Grimsbane is at the head of the main hall, discussing important matters with his advisors.
+    - The Dwarven Stronghold is a vast network of tunnels and chambers, filled with the sounds of industry.
+    - Ragnarok Spearson can be seen approaching the stronghold's gates, his figure silhouetted against the stormy sky.
+
+- **End Condition:**
+    - Alagor decides to join Ragnarok Spearson on his mission.
+    - Thane Grimsbane gives Alagor his blessing to leave Thundertop.
+    - Alagor finishes his work at the forge and prepares to leave the stronghold.
+
+Alagor, the Sweetheart, you stand amidst the fiery heart of Thundertop, the news of Ragnarok's approach heavy on your mind. Will you offer your aid to the Ironborn warrior, or will you remain in the safety of your stronghold? What do you do?
+2023-09-14 21:54:15,635 - root - INFO - User prompt received: I will go to aid the warrior
+2023-09-14 21:54:15,635 - __main__ - INFO - User: I will go to aid the warrior
+2023-09-14 21:54:15,635 - root - INFO - Generating a new response for user.
+2023-09-14 21:54:24,235 - __main__ - INFO - Game Master: Alagor, your decision rings clear and true. With a final look at your forge, you make your way towards the stronghold's gates. As you approach, you see the Ironborn warrior, Ragnarok Spearson, his figure looming against the stormy sky. You can't help but feel a sense of anticipation, a thrill of the adventure that awaits. Your journey, it seems, is about to begin. **End of the Scene**
+2023-09-14 21:54:24,235 - root - INFO - End of the scene detected.
+2023-09-14 21:58:11,529 - root - INFO - User prompt received: nice
+2023-09-14 21:58:11,530 - __main__ - INFO - User: nice
+2023-09-14 21:58:11,530 - root - INFO - Generating a new response for user.
+2023-09-14 21:58:23,926 - __main__ - INFO - Game Master: As the wind howls and the storm intensifies overhead, you stand at the base of the towering Craggy Peaks. The ground beneath your boots is a jumble of jagged rocks and scattered boulders, the air filled with a biting cold that gnaws at your bones. In front of you, blocking your path upward, is the imposing figure of the Storm Golem, its body a chaotic blend of stone and storm energy. It's an intimidating sight, but you have faced daunting foes before. How do you plan to tackle this obstacle? Will you confront the Golem head-on, devise a clever strategy to bypass it, or look for an alternative route up the Peaks? The choice is yours.
+2023-09-14 21:59:39,686 - root - INFO - User prompt received: I attack the golem!
+2023-09-14 21:59:39,686 - __main__ - INFO - User: I attack the golem!
+2023-09-14 21:59:39,686 - root - INFO - Generating a new response for user.
+2023-09-14 21:59:47,947 - __main__ - INFO - Game Master: Ragnarok Spearson, your battle enthusiasm is infectious! As you ready your rune-engraved spear "Ice Tooth", the wind whips your unkempt hair around your face, and your wild blue eyes gleam with a familiar battle-lust. You charge at the Storm Golem, the ground shaking with your powerful strides. Let's see how your attack fares. Roll 2d6 (you're prepared and you're an expert) and aim for a result over your balance point of 2 (as this is a Physical challenge).
+2023-09-14 22:00:32,638 - root - INFO - User prompt received: i rolled 5 and 6
+2023-09-14 22:00:32,639 - __main__ - INFO - User: i rolled 5 and 6
+2023-09-14 22:00:32,639 - root - INFO - Generating a new response for user.
+2023-09-14 22:00:41,152 - __main__ - INFO - Game Master: With a roared battle cry to the Nordic gods, you charge toward the Storm Golem. Your spear, Ice Tooth, whistles through the air, striking the Golem with a force that echoes off the surrounding peaks. The creature stumbles backward, chunks of stone falling from its body as it struggles to maintain its balance. Your successful attack has clearly damaged the creature, causing it to momentarily falter. Well done, Ragnarok! Your allies watch your show of strength in awe, ready to follow your lead.
+2023-09-14 22:01:24,485 - root - INFO - User prompt received: i lead the way
+2023-09-14 22:01:24,485 - __main__ - INFO - User: i lead the way
+2023-09-14 22:01:24,485 - root - INFO - Generating a new response for user.
+2023-09-14 22:01:36,479 - __main__ - INFO - Game Master: With the Storm Golem momentarily staggered, you seize the opportunity to forge ahead. You lead your companions, picking your way through the jagged rocks at an impressive pace given the harsh conditions. The storm continues to rage overhead, but with each stride, you grow closer to your goal. As you navigate the treacherous terrain, the rest of the party follows, their trust in your leadership evident. The path ahead is still fraught with danger, but you've made significant progress. Keep going, the Skyweavers await you atop the Craggy Peaks. **End of the Scene**
+2023-09-14 22:01:36,479 - root - INFO - End of the scene detected.
+2023-09-14 22:02:25,541 - root - INFO - User prompt received: .
+2023-09-14 22:02:25,541 - __main__ - INFO - User: .
+2023-09-14 22:02:25,541 - root - INFO - Generating a new response for user.
+2023-09-14 22:02:35,500 - __main__ - INFO - Game Master: As the storm continues to rage overhead, you and your companions press on, following the path you've carved through the rocky terrain. Despite the biting wind and occasional flare of lightning, you remain steadfast, your determination a beacon of hope for your party. Ahead, the towering peaks of the Craggy Peaks loom, their steep slopes a formidable challenge. But with each step, you draw closer to your goal, the promise of reaching the Skyweavers driving you forward. With Ragnarok leading the way, you journey on, the storm's fury a mere backdrop to your resolute quest.
